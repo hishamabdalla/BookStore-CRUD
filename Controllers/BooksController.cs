@@ -96,10 +96,9 @@ namespace Book_Store.Controllers
         [HttpDelete]
         public IActionResult Delete(int id) 
         {
-            var isDeleted=_booksService.Delete(id);
-            
+            var isDeleted = _booksService.Delete(id);
 
-            return isDeleted? Ok():BadRequest();
+            return isDeleted ? Ok() : BadRequest();
         }
     }
 }

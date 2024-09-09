@@ -79,25 +79,31 @@ namespace Book_Store.Services
                 File.Delete(cover);
                 return null;
             }
-        }   
+        }
+        
         public bool Delete(int id)
         {
             var isDeleted = false;
 
-            var book=_context.books.FirstOrDefault(a=>a.Id==id);
+            var book = _context.books.Find(id);
+
             if (book is null)
                 return isDeleted;
 
-            _context.books.Remove(book);
-            var effectedRows=_context.SaveChanges();
+            _context.Remove(book);
+            var effectedRows = _context.SaveChanges();
 
             if (effectedRows > 0)
             {
                 isDeleted = true;
-                var cover =Path.Combine(_imagesPath, book.Cover);
+
+                var cover = Path.Combine(_imagesPath, book.Cover);
+                File.Delete(cover);
             }
+
             return isDeleted;
         }
+
 
         private async Task<string> SaveCover(IFormFile cover)
         {
