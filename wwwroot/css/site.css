@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Start Custom Styles */
+.cover-preview {
+    max-width: 450px;
+    max-height: 450px;
+    border-radius: 23px;
+    margin: 20px;
+}
+/* End Custom Styles */
