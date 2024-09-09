@@ -1,4 +1,5 @@
-﻿using Book_Store.Models;
+﻿using Book_Store.Attributes;
+using Book_Store.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -28,8 +29,8 @@ namespace Book_Store.ViewModels
 
         public virtual Category? Category { get; set; }
 
-
-        
+        [MaxFileSize(FileSettings.MaxFileSizeInByte)]
+        [AllowedExtension(FileSettings.AllowExtenstions, ErrorMessage = "Only image files are allowed.")]
         [Required(ErrorMessage = "Cover is required.")]
         public IFormFile Cover { get; set; } = default!;
     }

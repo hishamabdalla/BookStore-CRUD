@@ -19,9 +19,9 @@ namespace Book_Store.Services
         public async Task Create(CreateBookFormViewModel model)
         {
             var coverName=$"{Guid.NewGuid()}{Path.GetExtension(model.Cover.FileName)}";
-            var paht = Path.Combine(_imagesPath, coverName);
+            var path = Path.Combine(_imagesPath, coverName);
 
-            using var stream=File.Create(paht);
+            using var stream=File.Create(path);
             await model.Cover.CopyToAsync(stream);
             Book book = new Book()
             {
