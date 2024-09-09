@@ -40,7 +40,9 @@
                     <label asp-for="Cover" class="form-label mt-4"></label>
                     <input asp-for=Cover class="form-control" placeholder="Enter Title"
                       data-rule-extension="@FileSettings.AllowExtenstions.Replace(".",string.Empty) "
-                    data-msg-extension="Not Allowed Extension">
+                      data-msg-extension="Not Allowed Extension"
+                      data-rule-filesize="@FileSettings.MaxFileSizeInByte"
+                      data-msg-filesize="Maximum allowed size is @(FileSettings.MaxFileSizeInMB)MB">
                     <small class="form-text text-muted">Only @FileSettings.AllowExtenstions files are allowed with max size @(FileSettings.MaxFileSizeInMB)MB .</small>
 
                     <span asp-validation-for="Cover" class="text-danger d-block" ></span>
@@ -57,22 +59,6 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            $('#Cover').on('change', function () {
-                const file = this.files[0];
-                if (file) {
-                    const objectURL = window.URL.createObjectURL(file);
-                    const $preview = $('.cover-preview');
-
-                    $preview.attr('src', objectURL).removeClass('d-none');
-
-                    // Revoke the object URL after the image has loaded
-                    $preview.on('load', function () {
-                        window.URL.revokeObjectURL(objectURL);
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="~/js/filesize-validator.js" asp-append-version="true"></script>
+    <script src="~/js/game-form.js" asp-append-version="true"></script>
 }

@@ -15,7 +15,13 @@ namespace Book_Store.Services
             _webHostEnvironment = webHostEnvironment;
             _imagesPath=$"{_webHostEnvironment.WebRootPath}{FileSettings.ImagesPath}";
         }
-
+        public IEnumerable<Book> GetAll()
+        {
+            return _context.books
+                .Include(b=>b.Category)
+                .AsNoTracking()
+                .ToList();
+        }
         public async Task Create(CreateBookFormViewModel model)
         {
             var coverName=$"{Guid.NewGuid()}{Path.GetExtension(model.Cover.FileName)}";
@@ -35,6 +41,23 @@ namespace Book_Store.Services
             _context.books.Add(book);
             _context.SaveChanges();
             
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        public Book GetById(int id)
+        {
+            return _context.books.FirstOrDefault(b => b.Id == id);
+        }
+
+        public void Update(CreateBookFormViewModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

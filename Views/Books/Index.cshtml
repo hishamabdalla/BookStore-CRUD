@@ -1,12 +1,58 @@
-﻿
+﻿@model IEnumerable<Book>
 @{
-    ViewData["Title"] = "Games";
+    ViewData["Title"] = "Books";
 }
 
-<a class="btn btn-secondary btn-lg" asp-action="Create">
-
-    <i class="bi bi-plus-square"></i>
-
-    Add Book
+<a class="btn btn-secondary btn-lg btn-custom" asp-action="Create">
+    <i class="bi bi-plus-square"></i> Add Book
 </a>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning mt-5">
+        <h4 class="alert-heading">No games!</h4>
+        <p class="mb-0">No games were added yet.</p>
+    </div>
+}
+else
+{
+    <div class="mt-5">
+        <table class="table table-hover table-borderless align-middle">
+            <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr class="border-bottom">
+                        <!-- Book Cover and Details -->
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <!-- Book Cover -->
+                                <div class="pe-3">
+                                    <img src="@($"{FileSettings.ImagesPath}/{book.Cover}")" alt="@book.Title" style="width: 70px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                                </div>
+                                <!-- Book Title and Category -->
+                                <div>
+                                    <h5 class="mb-1 text-dark fw-bold">@book.Title</h5>
+                                    <small class="text-muted">@book.Category.Name</small>
+                                </div>
+                            </div>
+                        </td>
+                        <!-- Actions -->
+                        <td class="text-end">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <a class="btn btn-sm btn-outline-primary me-2" asp-action="Edit" asp-route-id="@book.Id">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-outline-danger js-delete" data-id="@book.Id">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+
+}
 

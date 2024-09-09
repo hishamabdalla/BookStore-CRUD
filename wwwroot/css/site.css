@@ -28,4 +28,105 @@ body {
     border-radius: 23px;
     margin: 20px;
 }
+/*.card:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+}*/
+
+/* Magazine-style book card */
+.book-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+    /* Card hover effect */
+.book-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Category badge style */
+.badge {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Title truncation to prevent overflow */
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Spacing between rows */
+.row {
+    row-gap: 20px;
+}
+
+/* Additional padding for card body */
+.card-body {
+    padding: 15px;
+}
+
+/* Card image rounded corners */
+.card-img {
+    border-radius: 8px 8px 0 0;
+}
+
+.btn-custom {
+    background-color: #6c757d; /* Default Bootstrap secondary color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 20px; /* Extra padding for a larger button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.btn-custom:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.btn-custom i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+
+
+/*Book Index*/
+.table-hover tbody tr:hover {
+    background-color: #f9f9f9;
+    transition: background-color 0.2s ease-in;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-outline-primary:hover, .btn-outline-danger:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s ease;
+    }
+
+.text-muted {
+    font-size: 0.85rem;
+}
+
+img {
+    transition: transform 0.3s ease;
+}
+
+    img:hover {
+        transform: scale(1.05);
+    }
+
 /* End Custom Styles */

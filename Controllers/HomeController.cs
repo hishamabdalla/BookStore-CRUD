@@ -1,21 +1,20 @@
-using Book_Store.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Book_Store.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBooksService _booksService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBooksService booksService)
         {
-            _logger = logger;
+            _booksService = booksService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var books = _booksService.GetAll();
+            return View(books);
         }
 
       

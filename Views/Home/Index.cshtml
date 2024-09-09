@@ -1,8 +1,34 @@
-﻿@{
+﻿@model IEnumerable<Book>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (!Model.Any())
+{
+    <div class="alert alert-warning mt-5">
+        <h4 class="alert-heading">No Books!</h4>
+        <p class="mb-0"> No books were added yet. </p>
+    </div>
+}else
+{
+   <div class="row mt-5">
+       @foreach (var book in Model)
+        {
+            <a class="col-lg-3 col-md-4 col-sm-6 mb-4 text-decoration-none" asp-action="Details" asp-controller="Books" asp-route-Id="@book.Id">
+                <div class="card book-card h-100 border-0 shadow-sm">
+                    <!-- Book Cover -->
+                    <div class="card-img" style="height: 350px; background: url('@($"{FileSettings.ImagesPath}/{book.Cover}")') no-repeat center; background-size: cover; border-radius: 8px 8px 0 0;"></div>
+                    <!-- Book Info -->
+                    <div class="card-body text-center">
+                        <!-- Category Badge -->
+@*                         <span class="badge bg-primary rounded-pill px-3 py-2">@book.Category?.Name</span>
+ *@                        <!-- Book Title -->
+                        <h5 class="card-title mt-3 text-truncate" style="font-weight: 600;">@book.Title</h5>
+                        <!-- Price -->
+                        <h6 class="text-muted mt-2">@book.Price.ToString("C", new System.Globalization.CultureInfo("en-EG"))</h6>
+                    </div>
+                </div>
+            </a>
+        }
+   </div> 
+}

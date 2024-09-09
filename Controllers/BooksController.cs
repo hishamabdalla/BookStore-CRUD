@@ -16,7 +16,14 @@ namespace Book_Store.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var books = _booksService.GetAll();
+            return View(books);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var book= _booksService.GetById(id);
+            return View(book);
         }
 
         [HttpGet]
