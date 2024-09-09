@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label asp-for="CategoryId" class="form-label mt-4"></label>
                 <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories">
-                    <option>Choose a Category</option>
+                    <option value="">Choose a Category</option>
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
 
@@ -38,7 +38,9 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Cover" class="form-label mt-4"></label>
-                    <input asp-for=Cover class="form-control" placeholder="Enter Title">
+                    <input asp-for=Cover class="form-control" placeholder="Enter Title"
+                      data-rule-extension="@FileSettings.AllowExtenstions.Replace(".",string.Empty) "
+                    data-msg-extension="Not Allowed Extension">
                     <small class="form-text text-muted">Only @FileSettings.AllowExtenstions files are allowed with max size @(FileSettings.MaxFileSizeInMB)MB .</small>
 
                     <span asp-validation-for="Cover" class="text-danger d-block" ></span>
@@ -50,7 +52,7 @@
     </div>
 </form>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
