@@ -9,7 +9,7 @@
     Add a New Book 
 </h5>
 
-<form asp-controller="Books" >
+<form asp-controller="Books" enctype="multipart/form-data" >
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -18,21 +18,31 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="form-label mt-4"></label>
+                <label asp-for="Price" class="form-label mt-2"></label>
                 <input asp-for=Price value="@string.Empty" class="form-control" placeholder="Enter Price">
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Price" class="form-label mt-4"></label>
-                <input asp-for=Price class="form-control" placeholder="Enter Price">
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="CategoryId" class="form-label mt-4"></label>
                 <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories">
-                    <option value="0" >Choose Category</option>
+                    <option>Choose a Category</option>
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="form-label mt-2"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3" style="height: 110px;"
+                              placeholder="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cover" class="form-label mt-4"></label>
+                    <input asp-for=Cover class="form-control" placeholder="Enter Title">
+                    <small class="form-text text-muted">Only .jpg, .jpeg, .png files are allowed with max size 1MB .</small>
+
+                    <span asp-validation-for="Cover" class="text-danger d-block" ></span>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </div>

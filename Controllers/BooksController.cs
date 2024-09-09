@@ -1,15 +1,18 @@
 ﻿
+using Book_Store.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Controllers
 {
     public class BooksController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IBooksService _booksService;
+        private readonly ICateoriesService _cateoriesService;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(IBooksService booksService,ICateoriesService cateoriesService)
         {
-            _context = context;
+            this._booksService = booksService;
+            this._cateoriesService = cateoriesService;
         }
         public IActionResult Index()
         {
@@ -19,13 +22,26 @@ namespace Book_Store.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-           
-
             CreateBookFormViewModel Vm = new CreateBookFormViewModel()
             {
-                Categories = _context.categories.Select(c=>new SelectListItem{Value=c.Id.ToString(), Text =c.Name }).ToList()
+                Categories = _cateoriesService.GetSelectList()
             };
             return View(Vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateBookFormViewModel model)
+        {
+            if (!ModelState.IsValid) 
+            {
+                model.Categories = _cateoriesService.GetSelectList();
+                return View(model);
+            }
+            //save Books to database
+            //save cover to server
+           await _booksService.Create(model);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

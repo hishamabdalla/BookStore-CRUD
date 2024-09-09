@@ -20,16 +20,18 @@ namespace Book_Store.ViewModels
         public string Description { get; set; } = string.Empty;
 
 
-        [Required(ErrorMessage = "Cover is required.")]
-        public IFormFile Cover { get; set; } = default!;
 
         [Display(Name ="Category")]
+        [Required]
         public int? CategoryId { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }= Enumerable.Empty<SelectListItem>();
 
         public virtual Category? Category { get; set; }
 
 
+        //validate extension and size
 
+        [Required(ErrorMessage = "Cover is required.")]
+        public IFormFile Cover { get; set; } = default!;
     }
 }
