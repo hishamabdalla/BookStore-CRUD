@@ -13,7 +13,7 @@ namespace Book_Store.Services
         {
             this._context = context;
             _webHostEnvironment = webHostEnvironment;
-            _imagesPath=$"{_webHostEnvironment.WebRootPath}/assets/Images/Books";
+            _imagesPath=$"{_webHostEnvironment.WebRootPath}{FileSettings.ImagesPath}";
         }
 
         public async Task Create(CreateBookFormViewModel model)

@@ -29,8 +29,7 @@ namespace Book_Store.ViewModels
         public virtual Category? Category { get; set; }
 
 
-        //validate extension and size
-
+        
         [Required(ErrorMessage = "Cover is required.")]
         public IFormFile Cover { get; set; } = default!;
     }

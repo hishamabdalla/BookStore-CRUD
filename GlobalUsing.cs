@@ -5,3 +5,4 @@ global using Book_Store.Services;
 global using Book_Store.Models;
 global using Book_Store.Data;
 global using Book_Store.ViewModels;
+global using Book_Store.Settings;
