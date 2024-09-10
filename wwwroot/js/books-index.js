@@ -4,8 +4,8 @@
 
         const swal = Swal.mixin({
             customClass: {
-                confirmButton: 'btn btn-danger mx-2',
-                cancelButton: 'btn btn-light'
+                confirmButton: 'btn btn-success mx-2', // Change to a different color
+                cancelButton: 'btn btn-secondary'
             },
             buttonsStyling: false
         });

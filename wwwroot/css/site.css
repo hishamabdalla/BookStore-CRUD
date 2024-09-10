@@ -1,132 +1,144 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-/* Start Custom Styles */
-.cover-preview {
-    max-width: 450px;
-    max-height: 450px;
-    border-radius: 23px;
-    margin: 20px;
-}
-/*.card:hover {
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-    transition: all 0.3s ease-in-out;
-}*/
-
-/* Magazine-style book card */
+/*               Home Index                 */
 .book-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-    /* Card hover effect */
-.book-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-
-}
-
-/* Category badge style */
-.badge {
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-/* Title truncation to prevent overflow */
-.text-truncate {
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Spacing between rows */
-.row {
-    row-gap: 20px;
+    .book-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+.card-img {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
 }
 
-/* Additional padding for card body */
 .card-body {
     padding: 15px;
+    text-align: center;
 }
 
-/* Card image rounded corners */
-.card-img {
-    border-radius: 8px 8px 0 0;
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.btn-custom {
-    background-color: #6c757d; /* Default Bootstrap secondary color */
-    border-radius: 8px; /* Rounded corners */
-    padding: 10px 20px; /* Extra padding for a larger button */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+.card-price {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
 }
 
-.btn-custom:hover {
-    background-color: #5a6268; /* Darker shade on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+.card-category {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 0.875rem;
 }
 
-.btn-custom i {
-    margin-right: 8px; /* Space between icon and text */
+/*        Details             */
+.book-cover {
+    width: 95%;
+    height: 95%; /* Ensure the cover takes full height of its container */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Ensure proper positioning */
 }
 
+    /* Maintain aspect ratio for book cover */
+    .book-cover::before {
+        content: '';
+        display: block;
+        padding-top: 150%; /* Adjust padding-top to maintain aspect ratio (width:height ratio) */
+    }
 
+/* Animation for a falling effect (optional) */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
 
-/*Book Index*/
-.table-hover tbody tr:hover {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.book-cover {
+    animation: fall 1s ease-out;
+}
+
+.book-details {
+    padding: 20px;
     background-color: #f9f9f9;
-    transition: background-color 0.2s ease-in;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.book-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.book-price {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.book-description h5 {
+    font-weight: 600;
+}
+
+.book-description p {
+    color: #555;
+}
+
+.action-buttons .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
 
 .btn-outline-primary {
-    color: #007bff;
     border-color: #007bff;
+    color: #007bff;
 }
 
-.btn-outline-danger {
-    color: #dc3545;
-    border-color: #dc3545;
-}
-
-    .btn-outline-primary:hover, .btn-outline-danger:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-        transition: background-color 0.2s ease;
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
     }
 
-.text-muted {
-    font-size: 0.85rem;
+/*          Cover       Preview         */
+
+.cover-preview {
+    max-height: 500px;
+    border-radius: 8px;
 }
-
-img {
-    transition: transform 0.3s ease;
-}
-
-    img:hover {
-        transform: scale(1.05);
-    }
-
-/* End Custom Styles */

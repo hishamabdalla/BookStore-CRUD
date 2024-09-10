@@ -15,45 +15,67 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            background-color: #f8f9fa; /* Slightly lighter background color */
+            color: #212529; /* Slightly darker text color for better readability */
         }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 1030; /* High z-index to stay above other elements */
+            z-index: 1030;
+            background-color: #343a40; /* Dark header for a sleek look */
+            color: #ffffff;
         }
 
         .sidebar {
-            width: 250px;
+            width: 220px;
             min-height: 100vh;
-            background-color: #343a40; /* Dark background for sidebar */
-            color: white;
+            background-color: #ffffff; /* White background for sidebar */
+            color: #495057; /* Dark text for sidebar links */
             transition: all 0.3s;
+            border-right: 1px solid #dee2e6; /* Light border to distinguish the sidebar */
         }
 
             .sidebar .nav-link {
-                color: #adb5bd; /* Lighter color for links */
+                color: #495057; /* Slightly darker color for links */
+                padding: 10px 20px; /* Increased padding for better spacing */
+                border-radius: 4px;
+                margin: 5px 0;
             }
 
                 .sidebar .nav-link:hover, .sidebar .nav-link.active {
-                    background-color: #495057; /* Hover effect */
-                    color: white;
+                    background-color: #e2e6ea; /* Lighter hover effect */
+                    color: #343a40; /* Highlighted blue color for active links */
                 }
 
         .content {
             flex-grow: 1;
-            padding: 20px;
+            padding: 30px;
+            background-color: #ffffff; /* White background for main content */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Slightly larger shadow for the content area */
+            margin: 10px;
+            border-radius: 8px;
         }
 
         footer {
-            background-color: #343a40;
-            color: #adb5bd;
+            background-color: #343a40; /* Matching footer color with header */
+            color: #ffffff;
+            padding: 15px;
+            border-top: 2px solid #495057; /* Slightly lighter border for footer */
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem; /* Slightly larger font size for the brand */
+        }
+
+        .container-fluid {
+            max-width: 1140px; /* Fixed width for better alignment */
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="bg-dark text-white p-3 shadow-sm">
+    <header class="p-3 shadow-sm">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a class="navbar-brand text-white fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
                 <i class="bi bi-book"></i> Book Store
@@ -64,13 +86,13 @@
 
     <div class="d-flex">
         <!-- Sidebar -->
-        <nav class="sidebar d-none d-md-block border-end">
+        <nav class="sidebar d-none d-md-block">
             <ul class="nav flex-column p-3">
                 <li class="nav-item">
                     <a class="nav-link active" asp-controller="Books" asp-action="Index">
                         <i class="bi bi-book"></i> Books
                     </a>
-                </li>    
+                </li>
                 <!-- Additional links can be added here -->
             </ul>
         </nav>
@@ -84,9 +106,14 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-top footer mt-auto py-3 text-center">
+    <footer class="footer mt-auto py-4 text-center">
         <div class="container">
-            &copy; 2024 - Book_Store - <a class="text-reset" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="text-white">&copy; 2024 - Book Store</span>
+                <a class="text-white text-decoration-none" href="#">
+                    Privacy Policy
+                </a>
+            </div>
         </div>
     </footer>
 

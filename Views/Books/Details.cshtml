@@ -7,36 +7,33 @@
     <div class="row">
         <!-- Book Cover -->
         <div class="col-md-4">
-            <div class="book-cover" style="width: 100%; height: 300px; background: url('@($"{FileSettings.ImagesPath}/{Model.Cover}")') no-repeat center; background-size: contain; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-            </div>
+            <div class="book-cover" style="background-image: url('@($"{FileSettings.ImagesPath}/{Model.Cover}")');"></div>
         </div>
 
         <!-- Book Details -->
         <div class="col-md-8">
-            <div class="card-body">
+            <div class="book-details">
                 <!-- Book Title -->
-                <h3 class="card-title mb-3">@Model.Title</h3>
+                <h3 class="book-title">@Model.Title</h3>
 
                 <!-- Category Badge -->
-                <span class="badge bg-info mb-2">@Model.Category?.Name</span>
+                <span class="badge bg-secondary">@Model.Category?.Name</span>
 
                 <!-- Price -->
-                <h4 class="text-primary mb-3">@Model.Price.ToString("C", new System.Globalization.CultureInfo("en-EG"))</h4>
+                <h4 class="book-price">@Model.Price.ToString("C", new System.Globalization.CultureInfo("en-EG"))</h4>
 
                 <!-- Book Description -->
-                <div class="mb-3">
+                <div class="book-description">
                     <h5>Description:</h5>
-                    <p class="text-muted">@Model.Description</p>
+                    <p>@Model.Description</p>
                 </div>
 
-              
-
                 <!-- Action Buttons (e.g., Add to Cart, Buy) -->
-                <div class="d-flex">
-                    <a href="@Url.Action("AddToCart", new { id = Model.Id })" class="btn btn-success me-2">
+                <div class="action-buttons">
+                    <a href="@Url.Action("AddToCart", new { id = Model.Id })" class="btn btn-outline-success me-2">
                         <i class="bi bi-cart-plus"></i> Add to Cart
                     </a>
-                    <a href="@Url.Action("BuyNow", new { id = Model.Id })" class="btn btn-primary">
+                    <a href="@Url.Action("BuyNow", new { id = Model.Id })" class="btn btn-outline-primary">
                         <i class="bi bi-credit-card"></i> Buy Now
                     </a>
                 </div>

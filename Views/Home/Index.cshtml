@@ -15,20 +15,21 @@
        @foreach (var book in Model)
         {
             <a class="col-lg-3 col-md-4 col-sm-6 mb-4 text-decoration-none" asp-action="Details" asp-controller="Books" asp-route-Id="@book.Id">
-                <div class="card book-card h-100 border-0 shadow-sm">
+                <div class="card book-card h-100 border-0 rounded overflow-hidden">
                     <!-- Book Cover -->
-                    <div class="card-img" style="height: 350px; background: url('@($"{FileSettings.ImagesPath}/{book.Cover}")') no-repeat center; background-size: cover; border-radius: 8px 8px 0 0;"></div>
+                    <div class="card-img-top" style="height: 300px; background: url('@($"{FileSettings.ImagesPath}/{book.Cover}")') no-repeat center; background-size: cover;"></div>
                     <!-- Book Info -->
-                    <div class="card-body text-center">
-                        <!-- Category Badge -->
-@*                         <span class="badge bg-primary rounded-pill px-3 py-2">@book.Category?.Name</span>
- *@                        <!-- Book Title -->
-                        <h5 class="card-title mt-3 text-truncate" style="font-weight: 600;">@book.Title</h5>
+                    <div class="card-body p-3">
+                        <!-- Book Title -->
+                        <h5 class="card-title mb-2" style="font-weight: 500; font-size: 1.2rem;">@book.Title</h5>
                         <!-- Price -->
-                        <h6 class="text-muted mt-2">@book.Price.ToString("C", new System.Globalization.CultureInfo("en-EG"))</h6>
+                        <p class="text-muted mb-1" style="font-size: 1rem;">@book.Price.ToString("C", new System.Globalization.CultureInfo("en-EG"))</p>
+                        <!-- Category Badge -->
+                        <span class="badge bg-light text-dark rounded-pill px-2 py-1">@book.Category?.Name</span>
                     </div>
                 </div>
             </a>
+
         }
    </div> 
 }
