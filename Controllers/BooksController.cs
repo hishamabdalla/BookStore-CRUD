@@ -87,7 +87,7 @@ namespace Book_Store.Controllers
             var book= await _booksService.Update(model);
             if(book is null)
             {
-                return BadRequest();
+                
             }
             
             return RedirectToAction(nameof(Index));
