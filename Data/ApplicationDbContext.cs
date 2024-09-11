@@ -1,10 +1,13 @@
-﻿
-using Book_Store.Models;
-
+﻿using Microsoft.EntityFrameworkCore;
+using Book_Store.ViewModels;
 namespace Book_Store.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext:IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext() : base()
+        {
+
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) 
         {
             
@@ -40,13 +43,17 @@ namespace Book_Store.Data
             }
 );
 
+            base.OnModelCreating(modelBuilder);
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=Hisham\SQLEXPRESS;Initial Catalog=BookStore;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<Book> books { get; set; }
         public DbSet<Category> categories { get; set; }
+        public DbSet<Book_Store.ViewModels.RegisterUserViewModel> RegisterUserViewModel { get; set; } = default!;
     }
 }

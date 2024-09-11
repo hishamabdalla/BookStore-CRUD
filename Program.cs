@@ -12,6 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(option
 //regeist for Service
 builder.Services.AddScoped<ICateoriesService, CateoriesService>();
 builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+
+})
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
