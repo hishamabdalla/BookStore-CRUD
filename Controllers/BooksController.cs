@@ -1,5 +1,6 @@
 ﻿
 using Book_Store.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Controllers
@@ -14,6 +15,7 @@ namespace Book_Store.Controllers
             this._booksService = booksService;
             this._cateoriesService = cateoriesService;
         }
+        [Authorize(Roles ="Admin")]
         public IActionResult Index()
         {
             var books = _booksService.GetAll();

@@ -1,4 +1,77 @@
-/*               Home Index                 */
+/*Layout*/
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Slightly lighter background color */
+    color: #212529; /* Slightly darker text color for better readability */
+}
+
+header {
+    background-color: #343a40;
+    top: 0;
+    z-index: 1030;
+    background-color: #343a40; /* Dark header for a sleek look */
+    color: #ffffff;
+}
+.navbar-nav .nav-item {
+    margin-right: 15px; /* Adjust the spacing as needed */
+}
+
+.navbar-text {
+    margin-right: 15px;
+    font-weight: bold; /* Optional for better emphasis */
+}
+
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    background-color: #ffffff; /* White background for sidebar */
+    color: #495057; /* Dark text for sidebar links */
+    transition: all 0.3s;
+    border-right: 1px solid #dee2e6; /* Light border to distinguish the sidebar */
+}
+
+    .sidebar .nav-link {
+        color: #495057; /* Slightly darker color for links */
+        padding: 10px 20px; /* Increased padding for better spacing */
+        border-radius: 4px;
+        margin: 5px 0;
+    }
+
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: #e2e6ea; /* Lighter hover effect */
+            color: #343a40; /* Highlighted blue color for active links */
+        }
+
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #ffffff; /* White background for main content */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Slightly larger shadow for the content area */
+    margin: 10px;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #343a40; /* Matching footer color with header */
+    color: #ffffff;
+    padding: 15px;
+    border-top: 2px solid #495057; /* Slightly lighter border for footer */
+}
+
+.navbar-brand {
+    font-size: 1.6rem; /* Slightly larger font size for the brand */
+}
+
+.container-fluid {
+    max-width: 1140px; /* Fixed width for better alignment */
+}
+
+
+/* Home Index  */
 .book-card {
     display: flex;
     flex-direction: column;
@@ -47,7 +120,7 @@
     font-size: 0.875rem;
 }
 
-/*        Details             */
+/*Details */
 .book-cover {
     width: 95%;
     height: 95%; /* Ensure the cover takes full height of its container */
@@ -136,7 +209,7 @@
         color: #fff;
     }
 
-/*          Cover       Preview         */
+/*  Cover Preview */
 
 .cover-preview {
     max-height: 500px;

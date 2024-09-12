@@ -43,8 +43,23 @@ namespace Book_Store.Data
             }
 );
 
-            base.OnModelCreating(modelBuilder);
+            string[] roleNames = { "Admin", "User", "Manager" };
 
+            // Seed roles
+            foreach (var roleName in roleNames)
+            {
+                var role = new IdentityRole
+                {
+                    Name = roleName,
+                    NormalizedName = roleName.ToUpper(),
+                    Id = Guid.NewGuid().ToString()  // Generate unique GUIDs for each role
+                };
+
+                modelBuilder.Entity<IdentityRole>().HasData(role);
+                modelBuilder.Entity<LoginViewModel>().HasNoKey();
+                base.OnModelCreating(modelBuilder);
+
+            }
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,5 +70,6 @@ namespace Book_Store.Data
         public DbSet<Book> books { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Book_Store.ViewModels.RegisterUserViewModel> RegisterUserViewModel { get; set; } = default!;
+        public DbSet<Book_Store.ViewModels.LoginViewModel> LoginViewModel { get; set; } = default!;
     }
 }
